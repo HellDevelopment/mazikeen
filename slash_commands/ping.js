@@ -41,12 +41,10 @@ module.exports.run = async (bot, interaction) => {
     try {
         let api_ping = Math.abs(Date.now() - interaction.createdTimestamp);
 
-        interaction.replied = true;
-
         await interaction.channel
             .send({
                 embeds: [
-                    await bot.tools
+                    await bot.tools.discord
                         .generateEmbed({
                             author: 'pinging...',
                             thumbnail: bot.user.displayAvatarURL({ dynamic: true }),
@@ -58,8 +56,6 @@ module.exports.run = async (bot, interaction) => {
                 ]
             })
             .then(async msg => {
-                // console.log(msg);
-
                 let edit_ping = Math.abs(msg.createdTimestamp - interaction.createdTimestamp);
                 let socket_ping = Math.abs(bot.ws.ping);
 
@@ -77,31 +73,28 @@ module.exports.run = async (bot, interaction) => {
 
                 msg.edit({
                     embeds: [
-                        await bot.tools
-                            .generateEmbed(
-                                {
-                                    color: colorAPI,
-                                    author: 'Bot Pinging Information',
-                                    thumbnail: bot.user.displayAvatarURL({ dynamic: true }),
-                                    description: `
+                        await bot.tools.discord
+                            .generateEmbed({
+                                color: colorAPI,
+                                author: 'Bot Pinging Information',
+                                thumbnail: bot.user.displayAvatarURL({ dynamic: true }),
+                                description: `
 ${pingPad(api_ping, status_api, 'Discord API:')}
 ${pingPad(edit_ping, status_edit, 'Edit Ping:')}
 ${pingPad(socket_ping, status_socket, 'Websocket:')}
 
                                     `,
-                                    footer: {
-                                        text: `called by ${interaction.user.tag}`
-                                    }
-                                },
-                                pingEmbed => {}
-                            )
+                                footer: {
+                                    text: `called by ${interaction.user.tag}`
+                                }
+                            })
                             .catch(error => {})
                     ]
                 }).catch(error => {});
             })
             .catch(error => {});
     } catch (error) {
-        bot.error('Error in Slash Command ping', error);
+        bot.logger.error('Error in Slash Command ping', error);
     }
 };
 
