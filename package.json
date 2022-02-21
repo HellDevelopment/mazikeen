@@ -1,0 +1,48 @@
+{
+    "name": "mazikeen",
+    "version": "0.0.1",
+    "description": "A multi purpose discord bot",
+    "main": "bot.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "prettier": "prettier --write ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/HellDevelopment/mazikeen.git"
+    },
+    "keywords": [
+        "discord",
+        "discordbot",
+        "bot",
+        "chat",
+        "chatbot"
+    ],
+    "author": "LuciferMorningstarDev",
+    "license": "GPL-3.0",
+    "bugs": {
+        "url": "https://github.com/HellDevelopment/mazikeen/issues"
+    },
+    "homepage": "https://github.com/HellDevelopment/mazikeen#readme",
+    "dependencies": {
+        "@discordjs/rest": "^0.3.0",
+        "compression": "^1.7.4",
+        "cookie-parser": "^1.4.6",
+        "discord-api-types": "^0.27.2",
+        "discord.js": "^13.6.0",
+        "dotenv": "^16.0.0",
+        "enmap": "^5.8.8",
+        "express": "^4.17.3",
+        "express-rate-limit": "^6.2.1",
+        "mongodb": "^4.4.0",
+        "node-fetch": "^3.2.0",
+        "requests": "^0.3.0",
+        "serve-favicon": "^2.5.0",
+        "time-stamp": "^2.2.0",
+        "uuid": "^8.3.2",
+        "validator": "^13.7.0"
+    },
+    "devDependencies": {
+        "prettier": "^2.5.1"
+    }
+}
